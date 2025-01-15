@@ -4,9 +4,8 @@ type Greeting = {
   _id: string;
 }
 export default async function Back() {
-  return
-  <div></div>
-  /*const baseUrl = "https://m5-g2.vercel.app/"
+  
+  const baseUrl = "https://m5-g2.vercel.app/"
   const response = await fetch(`${baseUrl}/api`)
   const greetings: Greeting[] = await response.json()
   return (
@@ -15,5 +14,5 @@ export default async function Back() {
         <EditGreeting greetingObj={greetingObj} key={greetingObj._id.toString()}/>
       )}
     </div>
-  )*/
+  )
 }
