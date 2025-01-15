@@ -19,9 +19,16 @@ const EditGreeting = ({greetingObj}:Props)=>{
     const deleteGreeting = () => {
         fetch('/api', {
             method: "DELETE",
-            body: JSON.stringify({ id: greetingObj._id })
-        })
-    }
+            body: JSON.stringify({ id: greetingObj._id }),
+            headers: { 'Content-Type': 'application/json'}
+        });
+
+        if (response.ok) {
+            alert("Greeting deleted successfully");
+        } else {
+            alert("Failed to delete the greeting. Please try again");
+        }
+    };
 
     return (
         <div key={greetingObj._id.toString()}>
