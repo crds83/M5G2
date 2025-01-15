@@ -10,9 +10,7 @@ export default async function Back() {
   return (
     <div>
       {greetings.map(greetingObj=>
-        <h1 key={greetingObj._id.toString()}>
-          {greetingObj.greeting}
-        </h1>
+        <EditGreeting greetingObj={greetingObj} key={greetingObj._id.toString()}/>
       )}
     </div>
   )
