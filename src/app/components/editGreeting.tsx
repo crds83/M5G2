@@ -15,6 +15,14 @@ const EditGreeting = ({greetingObj}:Props)=>{
             body: JSON.stringify({ greeting, id:greetingObj._id })
         })
     }
+
+    const deleteGreeting = () => {
+        fetch('/api', {
+            method: "DELETE",
+            body: JSON.stringify({ id: greetingObj._id })
+        })
+    }
+
     return (
         <div key={greetingObj._id.toString()}>
             <h1> {greetingObj.greeting} </h1>
@@ -23,6 +31,7 @@ const EditGreeting = ({greetingObj}:Props)=>{
                 onChange={(e)=>setGreeting(e.target.value)}
             ></input>
             <button onClick={changeGreeting}>change this greeting</button>
+            <button onClick={deleteGreeting} style={{ marginLeft: '10px', color: 'red' }}>Delete this greeting</button>
         </div>
     )
 }
