@@ -16,15 +16,16 @@ const EditGreeting = ({greetingObj}:Props)=>{
         })
     }
 
-    const deleteGreeting = () => {
-        fetch('/api', {
+    const deleteGreeting = async () => {
+        const response = await fetch('/api', {
             method: "DELETE",
             body: JSON.stringify({ id: greetingObj._id }),
             headers: { 'Content-Type': 'application/json'}
         });
 
         if (response.ok) {
-            alert("Greeting deleted successfully");
+            alert("Greeting deleted successfully!");
+            deleteCallback(greetingObj.id);
         } else {
             alert("Failed to delete the greeting. Please try again");
         }
@@ -40,6 +41,7 @@ const EditGreeting = ({greetingObj}:Props)=>{
             <button onClick={changeGreeting}>change this greeting</button>
             <button onClick={deleteGreeting} style={{ marginLeft: '10px', color: 'red' }}>Delete this greeting</button>
         </div>
+        
     )
 }
-export default EditGreeting
+export default EditGreeting 
