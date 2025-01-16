@@ -26,12 +26,13 @@ export async function PUT(request: Request) {
 
 export async function DELETE(request: Request) {
     const { id } = await request.json();
+    const objId = new ObjectId(id as string)
     const client = await connect;
     // Logic to delete the greeting from the database
-    const result = await client.db("test").collection("greetings").deleteOne({ _id: id })
+    const result = await client.db("test").collection("greetings").deleteOne({ _id: objId })
     if (result) {
-        Response.json(200)
+        return Response.json(200)
     } else {
-        Response.json(500)
+        return Response.json(500)
     }
 };
