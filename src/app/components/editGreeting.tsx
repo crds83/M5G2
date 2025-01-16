@@ -25,7 +25,7 @@ const EditGreeting = ({greetingObj}:Props)=>{
 
         if (response.ok) {
             alert("Greeting deleted successfully!");
-            deleteCallback(greetingObj.id);
+           
         } else {
             alert("Failed to delete the greeting. Please try again");
         }

@@ -23,3 +23,15 @@ export async function PUT(request: Request) {
     await client.db("test").collection("greetings").updateOne({ _id: id }, { greeting: "this greeting has been updated" });
     return Response.json({ message: "successfully updated the document" })
 }
+
+export async function DELETE(request: Request) {
+    const { id } = await request.json();
+    const client = await connect;
+    // Logic to delete the greeting from the database
+    const result = await client.db("test").collection("greetings").deleteOne({ _id: id })
+    if (result) {
+        Response.json(200)
+    } else {
+        Response.json(500)
+    }
+};
